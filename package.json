@@ -1,0 +1,32 @@
+{
+  "name": "tuesday-outside-in",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test:acceptance": "cucumber-js features",
+    "test:unit": "mocha",
+    "test": "npm run test:unit && npm run test:acceptance"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PrivateCodeRetreat/tuesday-outside-in.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PrivateCodeRetreat/tuesday-outside-in/issues"
+  },
+  "homepage": "https://github.com/PrivateCodeRetreat/tuesday-outside-in#readme",
+  "dependencies": {
+    "@cucumber/cucumber": "*",
+    "eslint": "^7.25.0",
+    "hamjest": "^3.7.2",
+    "mocha": "^8.3.2",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.4"
+  },
+  "devDependencies": {
+    "@types/mocha": "^8.2.2"
+  }
+}
