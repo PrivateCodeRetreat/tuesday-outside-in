@@ -1,14 +1,15 @@
 import { Given, Then } from '@cucumber/cucumber'
+import { assertThat, equalTo } from 'hamjest'
+import { Board } from '../../src/Board'
 
-Given('a {int} x {int} board', function (rows: number, cols: number) {
-  // Given('a {int} x {float} board', function (int, float) {
-  // Given('a {float} x {int} board', function (float, int) {
-  // Given('a {float} x {float} board', function (float, float2) {
-  // Write code here that turns the phrase above into concrete actions
-  return 'pending'
+type ScenarioContext = {
+  theBoard: Board
+}
+
+Given('a {int} x {int} board', function (this: ScenarioContext, rows: number, cols: number) {
+  this.theBoard = Board.create(rows, cols)
 })
 
-Then('the board looks like:', function (docString: string) {
-  // Write code here that turns the phrase above into concrete actions
-  return 'pending'
+Then('the board looks like:', function (this: ScenarioContext, expected: string) {
+  assertThat(this.theBoard.toString(), equalTo(expected))
 })
