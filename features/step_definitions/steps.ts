@@ -1,4 +1,4 @@
-import { Given, Then } from '@cucumber/cucumber'
+import { DataTable, Given, Then, When } from '@cucumber/cucumber'
 import { assertThat, equalTo } from 'hamjest'
 import { Board } from '../../src/Board'
 
@@ -6,10 +6,22 @@ type ScenarioContext = {
   theBoard: Board
 }
 
-Given('a {int} x {int} board', function (this: ScenarioContext, rows: number, cols: number) {
-  this.theBoard = Board.create(rows, cols)
+Given('a board:', function (this: ScenarioContext, dataTable: DataTable) {
+  this.theBoard = Board.from(dataTable.raw())
 })
 
-Then('the board looks like:', function (this: ScenarioContext, expected: string) {
-  assertThat(this.theBoard.toString(), equalTo(expected))
+When('{int} iteration(s) has/have happened', function (this: ScenarioContext, iterations: number) {
+  this.theBoard = this.theBoard.iterate(iterations)
+})
+
+Then('the board looks like:', function (this: ScenarioContext, expected: DataTable) {
+  assertThat(
+    this.theBoard.toString(),
+    equalTo(
+      expected
+        .raw()
+        .map((row) => row.join(''))
+        .join('\n')
+    )
+  )
 })

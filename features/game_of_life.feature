@@ -1,10 +1,14 @@
 Feature: Game of life
 
-  Scenario: 0 iterations
-    Given a 2 x 3 board
+  Scenario: Still life - block
+    Given a board:
+      | . | . | . | . |
+      | . | * | * | . |
+      | . | * | * | . |
+      | . | . | . | . |
+    When 2 iterations have happened
     Then the board looks like:
-      """
-      ...
-      ...
-      ...
-      """
+      | . | . | . | . |
+      | . | * | * | . |      
+      | . | * | * | . |      
+      | . | . | . | . |      
