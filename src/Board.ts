@@ -1,15 +1,15 @@
 export class Board {
-  iterate(iterations: number): Board {
-    // TODO: implement me
-    return new Board()
-  }
-
   static from(raw: string[][]): Board {
-    // TODO: implement me
-    return new Board()
+    return new Board(raw)
   }
 
-  toString(): string {
-    return ['....', '.**.', '.**.', '....'].join('\n')
+  constructor(readonly raw: string[][]) {}
+
+  iterate(iterations: number): Board {
+    return new Board(this.raw)
+  }
+
+  asArray(): string[][] {
+    return this.raw
   }
 }

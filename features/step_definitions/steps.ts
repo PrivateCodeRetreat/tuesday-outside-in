@@ -15,13 +15,5 @@ When('{int} iteration(s) has/have happened', function (this: ScenarioContext, it
 })
 
 Then('the board looks like:', function (this: ScenarioContext, expected: DataTable) {
-  assertThat(
-    this.theBoard.toString(),
-    equalTo(
-      expected
-        .raw()
-        .map((row) => row.join(''))
-        .join('\n')
-    )
-  )
+  assertThat(this.theBoard.asArray(), equalTo(expected.raw()))
 })
