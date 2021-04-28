@@ -12,6 +12,7 @@ describe(Board.name, () => {
       const board = Board.from([['.']])
       assertThat(board.asArray(), equalTo([['.']]))
     })
+
     it('renders a 2x2 board with two dead cells', () => {
       const board = Board.from([
         ['.', '.'],
@@ -25,5 +26,12 @@ describe(Board.name, () => {
         ])
       )
     })
+
+    it('renders a single alive cell', () => {
+      const board = Board.from([['*']])
+      assertThat(board.asArray(), equalTo([['*']]))
+    })
   })
+
+  describe('iterating', () => {})
 })

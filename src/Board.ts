@@ -4,9 +4,19 @@ class DeadCell {
   }
 }
 
+class LiveCell {
+  toString() {
+    return '*'
+  }
+}
+
+type Cell = LiveCell | DeadCell
+
+const toCell: (raw: string) => Cell = (raw) => (raw == '.' ? new DeadCell() : new LiveCell())
+
 export class Board {
   static from(raw: string[][]): Board {
-    return new Board(raw.map((row) => row.map((rawCell) => new DeadCell())))
+    return new Board(raw.map((row) => row.map(toCell)))
   }
 
   constructor(readonly cells: DeadCell[][]) {}
